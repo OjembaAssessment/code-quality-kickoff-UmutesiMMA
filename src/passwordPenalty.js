@@ -11,7 +11,7 @@ export default function penaltyPoints(password = "") {
   if(password===null)return 0
   if (typeof password !== "string") password = String(password);
   let matched = password.match(/([a-zA-Z0-9])\1+/gi)
-  if(!cha)return 0
+  if(!matched)return 0
   for(let group of matched){
     if (group.length===2)count+=1
     if (group.length>=3)count+=2

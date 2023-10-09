@@ -9,8 +9,3 @@ export default function findLargestNumber(numbers) {
   return Math.max(...numbers);;
 }
 
-// for (let i = 1; i < numbers.length; i++) {
-//   if (numbers[i] > largest) {
-//     largest = numbers[i];
-//   }
-// }

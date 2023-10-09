@@ -9,24 +9,25 @@ export const forbiddenPasswords = ["amG84h6yeQ", "mc9Q20pdjH", "jnT6Q2f8U5"];
 export default function isValidPassword(password = "") {
   // The following line ensures, that password is always a string, like the number 128 -> string "128"
   if (typeof password !== "string") password = String(password);
-  if(password.length!==10)return false
-  // if(password.match(/[a-zA-Z0-9]+/))return true
-  if(password.match(/d+/))return false
-  if(password.match(/[a-zA-Z]+/))return false
-  if(forbiddenPasswords.includes(password))return false
+  if(password.length!==10)return false    //less than 10
+
+  if(!password.match(/\W/))return false    //happy case
+
+  if(!password.match(/\d+/))return false   //has to have numbers
+
+  // if(!password.match(/d+/))return false   
 
 
-  // * * * YOUR CODE GOES IN HERE ... * * *
-  /*
-   * if (password is not exactly 10 digits or characters...) {
-   *   return ...;
-   * }
-   *
-   * if (is not composed by digits and numbers) {
-   *   return ...;
-   * }
-   */
+  if(!password.match(/[a-zA-Z]/))return false     //has to have letters
+
+// if(password.match(/[^a-zA-Z0-9]/))return false    //no special characters
+
+if(!password.match(/^[a-zA-Z0]$/)) return false  // both lower and upper case
+
+
+  if(forbiddenPasswords.includes(password))return false //at least 4 different characters
+
   const setOfPassword = new Set([...password]);
   if (setOfPassword.size < 4) return false;
   return true;
-}
+}                                         
